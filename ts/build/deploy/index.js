@@ -77,8 +77,10 @@ function test() {
                 case 0:
                     provider = new fuels_1.Provider('https://node-beta-2.fuel.network/graphql');
                     wallet = fuels_1.Wallet.fromPrivateKey(process.env.key, provider);
+                    console.log(wallet);
+                    console.log(provider);
                     console.log(1);
-                    byteCode = (0, fs_1.readFileSync)((0, path_1.join)(__dirname, '../bin.bin'));
+                    byteCode = (0, fs_1.readFileSync)((0, path_1.join)(__dirname, './../../bin.bin'));
                     console.log(2);
                     return [4 /*yield*/, new fuels_1.ContractFactory(byteCode, abi_json_1.default, wallet).deployContract()];
                 case 1:

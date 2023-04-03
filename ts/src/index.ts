@@ -16,8 +16,8 @@ import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-d
 dotenv.config()
   async function test() {
     const provider = new Provider('https://node-beta-2.fuel.network/graphql');
-     
- const wallet =   Wallet.fromSeed((process.env.key as string)  ); // private key with coins
+    const wallet =   Wallet.fromPrivateKey(( process.env.key as string),provider); // private key with coins
+    
  console.log(1);
 const byteCode = readFileSync(
   join(__dirname, './../bin.bin')

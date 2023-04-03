@@ -1,4 +1,4 @@
-  import { Provider, Contract, ContractFactory, Wallet } from "fuels";
+  import { Provider, Contract, ContractFactory, Wallet, CoinStatus } from "fuels";
  
 // Byte code generated using: forc build
 import { readFileSync } from "fs";
@@ -9,9 +9,11 @@ dotenv.config()
   async function test() {
     const provider = new Provider('https://node-beta-2.fuel.network/graphql');
  const wallet =   Wallet.fromPrivateKey(( process.env.key as string),provider); // private key with coins
+ console.log(wallet);
+ console.log(provider);
  console.log(1);
 const byteCode = readFileSync(
-  join(__dirname, '../bin.bin')
+  join(__dirname, './../../bin.bin')
 );
 console.log(2);
 const contract = await new ContractFactory(byteCode, abi, wallet).deployContract();

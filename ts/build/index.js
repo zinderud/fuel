@@ -83,7 +83,7 @@ function test() {
             switch (_a.label) {
                 case 0:
                     provider = new fuels_1.Provider('https://node-beta-2.fuel.network/graphql');
-                    wallet = fuels_1.Wallet.fromSeed(process.env.key);
+                    wallet = fuels_1.Wallet.fromPrivateKey(process.env.key, provider);
                     console.log(1);
                     byteCode = (0, fs_1.readFileSync)((0, path_1.join)(__dirname, './../bin.bin'));
                     console.log(2);
