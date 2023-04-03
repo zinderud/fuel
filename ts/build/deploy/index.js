@@ -64,18 +64,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var fuels_1 = require("fuels");
 // Byte code generated using: forc build
-var bin_bin_1 = __importDefault(require("./bin.bin"));
+var fs_1 = require("fs");
+var path_1 = require("path");
 var abi_json_1 = __importDefault(require("./abi.json"));
 var dotenv = __importStar(require("dotenv")); // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 function test() {
     return __awaiter(this, void 0, void 0, function () {
-        var wallet, contract;
+        var provider, wallet, byteCode, contract;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    wallet = new Wallet(process.env.key);
-                    return [4 /*yield*/, new fuels_1.ContractFactory(bin_bin_1.default, abi_json_1.default, wallet).deployContract()];
+                    provider = new fuels_1.Provider('https://node-beta-2.fuel.network/graphql');
+                    wallet = fuels_1.Wallet.fromPrivateKey(process.env.key, provider);
+                    console.log(1);
+                    byteCode = (0, fs_1.readFileSync)((0, path_1.join)(__dirname, '../bin.bin'));
+                    console.log(2);
+                    return [4 /*yield*/, new fuels_1.ContractFactory(byteCode, abi_json_1.default, wallet).deployContract()];
                 case 1:
                     contract = _a.sent();
                     //const contract = await this.factory.deployContract(factory);
@@ -85,3 +90,29 @@ function test() {
         });
     });
 }
+test();
+/* import { Provider, ContractFactory } from 'fuels';
+import { generateTestWallet } from '@fuel-ts/wallet/test-utils';
+import { readFileSync } from "fs";
+import { join } from "path"; */
+// basic setup
+/*
+  const provider = new Provider('http://127.0.0.1:4000/graphql');
+  const wallet = await generateTestWallet(provider, [[5_000_000, NativeAssetId]]);
+
+  // load the byteCode of the contract, generated from Sway source
+  const byteCode = readFileSync(
+    join(__dirname, '../test-projects/storage-test-contract/out/debug/storage-test.bin')
+  );
+
+  // load the JSON abi of the contract, generated from Sway source
+  const abi = JSON.parse(
+    readFileSync(
+      join(__dirname, '../test-projects/storage-test-contract/out/debug/storage-test-abi.json')
+    ).toString()
+  );
+
+  // send byteCode and ABI to ContractFactory to load
+  const factory = new ContractFactory(byteCode, abi, wallet);
+
+  */ 

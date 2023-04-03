@@ -1,0 +1,2 @@
+counter-contract
+forc parse-bytecode out/debug/counter-contract.bin
