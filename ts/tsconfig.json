@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "moduleResolution": "node",
+
     "module": "commonjs",
     "lib": ["es6"],
     "allowJs": true,
@@ -9,8 +11,9 @@
     "strict": true,
     "esModuleInterop": true,
     "types": ["node", "jest"],
-    "skipLibCheck": true
+    "skipLibCheck": true,  "resolveJsonModule": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*" ],
+ 
   "exclude": ["src/**/*.spec.ts"]
 }
