@@ -6,8 +6,9 @@ console.log("address", wallet.address.toString());
 console.log("private key", wallet.privateKey);
 //fuel1tnvn9lum9g67jfz96l0q33n7pujexau5lkgwak9xky48j9p8eaqsgfgyd7 */
 
-import { Provider, Contract, ContractFactory, Wallet } from "fuels";
- 
+import { Provider, Contract, ContractFactory, Wallet, NativeAssetId } from "fuels";
+import { generateTestWallet } from '@fuel-ts/wallet/test-utils';
+
 // Byte code generated using: forc build
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -16,16 +17,20 @@ import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-d
 dotenv.config()
   async function test() {
     const provider = new Provider('https://node-beta-2.fuel.network/graphql');
-    const wallet =   Wallet.fromPrivateKey(( process.env.key as string),provider); // private key with coins
-    
+   const wallet =   Wallet.fromPrivateKey(( process.env.key as string),provider); // private key with coins
+    //const wallet = await generateTestWallet(provider, [[5_000_000, NativeAssetId]]);
+    console.log("address", wallet.address.toString());
+console.log("private key", wallet.privateKey);
+  console.log(wallet);
+  console.log(provider);
  console.log(1);
 const byteCode = readFileSync(
   join(__dirname, './../bin.bin')
 );
 console.log(2);
-const contract = await new ContractFactory(byteCode, abi, wallet).deployContract();
-//const contract = await this.factory.deployContract(factory);
-console.log(contract.id);
+const contract = await new ContractFactory(byteCode, abi, wallet);
+const contracta = await contract.deployContract();
+ console.log(contracta.id);
  
 }  
 

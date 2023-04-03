@@ -78,20 +78,27 @@ var dotenv = __importStar(require("dotenv")); // see https://github.com/motdotla
 dotenv.config();
 function test() {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, wallet, byteCode, contract;
+        var provider, wallet, byteCode, contract, contracta;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     provider = new fuels_1.Provider('https://node-beta-2.fuel.network/graphql');
                     wallet = fuels_1.Wallet.fromPrivateKey(process.env.key, provider);
+                    //const wallet = await generateTestWallet(provider, [[5_000_000, NativeAssetId]]);
+                    console.log("address", wallet.address.toString());
+                    console.log("private key", wallet.privateKey);
+                    console.log(wallet);
+                    console.log(provider);
                     console.log(1);
                     byteCode = (0, fs_1.readFileSync)((0, path_1.join)(__dirname, './../bin.bin'));
                     console.log(2);
-                    return [4 /*yield*/, new fuels_1.ContractFactory(byteCode, abi_json_1.default, wallet).deployContract()];
+                    return [4 /*yield*/, new fuels_1.ContractFactory(byteCode, abi_json_1.default, wallet)];
                 case 1:
                     contract = _a.sent();
-                    //const contract = await this.factory.deployContract(factory);
-                    console.log(contract.id);
+                    return [4 /*yield*/, contract.deployContract()];
+                case 2:
+                    contracta = _a.sent();
+                    console.log(contracta.id);
                     return [2 /*return*/];
             }
         });
