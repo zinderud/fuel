@@ -50,7 +50,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "fuels": "^0.37.1",
+    "fuels": "^0.38",
     "jest-cucumber": "^3.0.1"
   }
 }
