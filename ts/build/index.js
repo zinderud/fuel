@@ -1,10 +1,4 @@
 "use strict";
-/* const { Wallet } = require("fuels");
-
-const wallet = Wallet.generate();
-
-console.log("address", wallet.address.toString());
-console.log("private key", wallet.privateKey);
 //fuel1tnvn9lum9g67jfz96l0q33n7pujexau5lkgwak9xky48j9p8eaqsgfgyd7 */
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -107,28 +101,3 @@ function test() {
     });
 }
 test();
-/* import { Provider, ContractFactory } from 'fuels';
-import { generateTestWallet } from '@fuel-ts/wallet/test-utils';
-import { readFileSync } from "fs";
-import { join } from "path"; */
-// basic setup
-/*
-  const provider = new Provider('http://127.0.0.1:4000/graphql');
-  const wallet = await generateTestWallet(provider, [[5_000_000, NativeAssetId]]);
-
-  // load the byteCode of the contract, generated from Sway source
-  const byteCode = readFileSync(
-    join(__dirname, '../test-projects/storage-test-contract/out/debug/storage-test.bin')
-  );
-
-  // load the JSON abi of the contract, generated from Sway source
-  const abi = JSON.parse(
-    readFileSync(
-      join(__dirname, '../test-projects/storage-test-contract/out/debug/storage-test-abi.json')
-    ).toString()
-  );
-
-  // send byteCode and ABI to ContractFactory to load
-  const factory = new ContractFactory(byteCode, abi, wallet);
-
-  */ 

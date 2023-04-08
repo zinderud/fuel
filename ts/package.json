@@ -8,6 +8,7 @@
     "start:dev": "npx nodemon",
     "start": "npm run build && node build/index.js",
     "deploy": "npm run build && node deploy/index.js",
+    "walet": "npm run build && node build/walet.js",
     "lint": "eslint . --ext .ts",
     "prettier-format": "run-script-os",
     "prettier-format:win32": "prettier --config .prettierrc \"./src/**/*.ts\" --write",
